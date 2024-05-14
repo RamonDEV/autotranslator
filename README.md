@@ -3,7 +3,7 @@ Use to Translate Variables in Archives.lua or in lines
 
 How to Use
 
->>>>>Obs: Open In Folder in Visual Studio<<<<<
+>>>>>Obs: Open In Folder in Visual Studio
 
 1º install de pips   
 | pip install deep-translator |
