@@ -21,8 +21,11 @@ translatorconfig = config_data.get('translator', None)
 apikeyconfig = config_data.get('apikey', None)
 languagesource = config_data.get('languagesource', None)
 languageto = config_data.get('languageto', None)
+removenumber = config_data.get('removenumbers', None)
 deletestringsconfig = config_data.get('deletestrings', [])
 translatevariables = config_data.get('variabletotranslate', [])
+removestring = config_data.get('removenumbers', None)
+removestringto = config_data.get('removestringto', None)
 
 if translatorconfig == "GoogleTranslator":
     def translate_text(text):
@@ -34,9 +37,12 @@ if translatorconfig == "GoogleTranslator":
                 if string_substituir in text:
                     text = text.replace(string_substituir, '')
 
-        if '_' in text:
+        if removenumber:
             text = re.sub(r'\d+', '', text)
-            text = text.replace('_', ' ')
+
+        if removestring:
+            if f'{removestring}' in text:
+                text = text.replace(f'{removestring}', removestringto)
         
         if GoogleTranslator(source=languagesource, target=languageto).translate(text):
             translated = GoogleTranslator(source=languagesource, target=languageto).translate(text)
@@ -55,9 +61,12 @@ elif translatorconfig == "DeeplTranslator":
                 if string_substituir in text:
                     text = text.replace(string_substituir, '')
 
-        if '_' in text:
+        if removenumber:
             text = re.sub(r'\d+', '', text)
-            text = text.replace('_', ' ')
+
+        if removestring:
+            if f'{removestring}' in text:
+                text = text.replace(f'{removestring}', removestringto)
 
         translated = DeeplTranslator(api_key=apikeyconfig, source=languagesource, target=languageto, use_free_api=True).translate(text)
         if translated is not None:
@@ -75,9 +84,12 @@ elif translatorconfig == "Translator":
                 if string_substituir in text:
                     text = text.replace(string_substituir, '')
 
-        if '_' in text:
+        if removenumber:
             text = re.sub(r'\d+', '', text)
-            text = text.replace('_', ' ')
+
+        if removestring:
+            if f'{removestring}' in text:
+                text = text.replace(f'{removestring}', removestringto)
         
         translator = Translator()
         translated = translator.translate(text, dest=languageto).text
