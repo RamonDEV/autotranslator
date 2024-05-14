@@ -1,0 +1,16 @@
+{	
+	
+	"languagesource": "en",
+	"languageto": "pt",
+	"translator": "Translator", 						
+	"apikey": "", 	
+	"deletestrings": [
+	  "CLOTHING_ITEM_F_HAIR",
+	  "CLOTHING_ITEM_M_HAIR",
+	  "CLOTHING_ITEM_M_BEARD"
+	],
+	"variabletotranslate":[
+		"label",
+		"description"
+	]
+}
