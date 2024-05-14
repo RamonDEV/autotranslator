@@ -4,6 +4,9 @@
 	"languageto": "pt",
 	"translator": "Translator", 						
 	"apikey": "", 	
+	"removenumbers": false,
+	"removestring": false,
+	"removestringto": "",
 	"deletestrings": [
 	  "CLOTHING_ITEM_F_HAIR",
 	  "CLOTHING_ITEM_M_HAIR",
